@@ -25,24 +25,22 @@ contract CumulativeMerkleDrop is Ownable, ICumulativeMerkleDrop {
         bytes32[] proof;
     }
 
-    event RewardsHolderUpdated(address oldRewardsHolder, address newRewardsHolder);
-
     constructor(address token_, address rewardsHolder_) {
         require(IERC20(token_).totalSupply() > 0, "Token contract must be set");
-        require(rewardsHolder_ != address(0), "Rewards GHolder must be an address");
+        require(rewardsHolder_ != address(0), "Rewards holder must be an address");
         token = token_;
         rewardsHolder = rewardsHolder_;
     }
 
     function setMerkleRoot(bytes32 merkleRoot_) external override onlyOwner {
-        emit MerkelRootUpdated(merkleRoot, merkleRoot_);
         merkleRoot = merkleRoot_;
+        emit MerkelRootUpdated(merkleRoot, merkleRoot_);
     }
 
     function setRewardsHolder(address rewardsHolder_) external onlyOwner {
-        require(rewardsHolder_ != address(0));
-        emit RewardsHolderUpdated(rewardsHolder, rewardsHolder_);
+        require(rewardsHolder_ != address(0), "Rewards holder must be an address");
         rewardsHolder = rewardsHolder_;
+        emit RewardsHolderUpdated(rewardsHolder, rewardsHolder_);
     }
 
     function claim(
@@ -52,16 +50,16 @@ contract CumulativeMerkleDrop is Ownable, ICumulativeMerkleDrop {
         bytes32 expectedMerkleRoot,
         bytes32[] calldata merkleProof
     ) public override {
-        require(merkleRoot == expectedMerkleRoot, "CMD: Merkle root was updated");
+        require(merkleRoot == expectedMerkleRoot, "Merkle root was updated");
 
         // Verify the merkle proof
         bytes32 leaf = keccak256(abi.encodePacked(stakingProvider, cumulativeAmount));
-        require(_verifyAsm(merkleProof, expectedMerkleRoot, leaf), "CMD: Invalid proof");
+        require(_verifyAsm(merkleProof, expectedMerkleRoot, leaf), "Invalid proof");
 
         // Mark it claimed
         uint256 preclaimed = cumulativeClaimed[stakingProvider];
-        require(preclaimed < cumulativeAmount, "CMD: Nothing to claim");
-        cumulativeClaimed[account] = cumulativeAmount;
+        require(preclaimed < cumulativeAmount, "Nothing to claim");
+        cumulativeClaimed[stakingProvider] = cumulativeAmount;
 
         // Send the token
         unchecked {
@@ -84,7 +82,7 @@ contract CumulativeMerkleDrop is Ownable, ICumulativeMerkleDrop {
                 Claims[i].proof
             );
         }
-     }
+    }
 
     function verify(bytes32[] calldata merkleProof, bytes32 root, bytes32 leaf) public pure returns (bool) {
         return merkleProof.verify(root, leaf);
