@@ -336,7 +336,7 @@ describe('Cumulative Merkle Distribution', function () {
               const claimAmount = ethers.BigNumber.from(cumDist.claims[claimAccount].amount)
               const claimProof = cumDist.claims[claimAccount].proof
               const claimBeneficiary = cumDist.claims[claimAccount].beneficiary
-              
+
               // add up all rewards from previous distribution
               let prevReward = {}
               proofAccounts.forEach((account, _) => {

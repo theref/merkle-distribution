@@ -42,5 +42,41 @@
   "0x4492105885AA9eAa556aC6F96B0e49917bC1A080": {
     "beneficiary": "0x044112544758015E7Af23f19c9cf9457b726650B",
     "amount": 4129712
+  },
+  "0x574e0baB3B430399530495687aaF32e4503Dbf7b": {
+    "beneficiary": "0x574e0baB3B430399530495687aaF32e4503Dbf7b",
+    "amount": 5453553
+  },
+  "0x03F1A87dBDA73FeD571328524eE8F634B4b29506": {
+    "beneficiary": "0x03F1A87dBDA73FeD571328524eE8F634B4b29506",
+    "amount": 1000000
+  },
+  "0x3A56D2b4ac54197307E010977bd45A18f11AA1dd": {
+    "beneficiary": "0x3A56D2b4ac54197307E010977bd45A18f11AA1dd",
+    "amount": 35000000
+  },
+  "0x349c0371554d497016EaD8f8291c63e4cE78CD2D": {
+    "beneficiary": "0x349c0371554d497016EaD8f8291c63e4cE78CD2D",
+    "amount": 12000000
+  },
+  "0x9d9336cCdd21290E2A105aee5eE8E8dad7eaC779": {
+    "beneficiary": "0x9d9336cCdd21290E2A105aee5eE8E8dad7eaC779",
+    "amount": 11000000
+  },
+  "0x94496e226253C9807ac611a43ca0cae5caf432e5": {
+    "beneficiary": "0x9d9336cCdd21290E2A105aee5eE8E8dad7eaC779",
+    "amount": 958346389
+  },
+  "0x3ef8EB737Aabfdd563Bc990fdFf20A7CE25247Ff": {
+    "beneficiary": "0x9d9336cCdd21290E2A105aee5eE8E8dad7eaC779",
+    "amount": 39000000
+  },
+  "0x370d901A59B1D0E0019c1a7d18d7D94Fd82a4097": {
+    "beneficiary": "0x370d901A59B1D0E0019c1a7d18d7D94Fd82a4097",
+    "amount": 1000000
+  },
+  "0x4cBf970507026F9Cc780cEd84BDE73B65F37B3Df": {
+    "beneficiary": "0x370d901A59B1D0E0019c1a7d18d7D94Fd82a4097",
+    "amount": 988888
   }
 }
